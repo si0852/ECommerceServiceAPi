@@ -29,7 +29,7 @@ public class UserPointFacade {
 
         BigDecimal point = BigDecimal.valueOf(chargePoint);
 
-        User userInfo = userService.getUserInfoWithLock(userId);
+        User userInfo = userService.getUserInfo(userId);
         BigDecimal beforePoint = userInfo.getPoint();
         userInfo.chargePoint(point);
 

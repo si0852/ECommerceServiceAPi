@@ -45,7 +45,7 @@ class UserPointFacadeTest {
         String userId = "userId";
         Long chargePoint = 10000L;
 
-        when(userService.getUserInfoWithLock(userId)).thenThrow(new EntityNotFoundException("유저 없음"));
+        when(userService.getUserInfo(userId)).thenThrow(new EntityNotFoundException("유저 없음"));
 
         assertThrows(EntityNotFoundException.class, () -> userPointFacade.chargePoint(userId, chargePoint));
     }
@@ -58,7 +58,7 @@ class UserPointFacadeTest {
 
         User mockUser = spy(User.builder().userId(userId).password("password").userName("sihyun").point(new BigDecimal(chargePoint)).build());
 
-        when(userService.getUserInfoWithLock(userId)).thenReturn(mockUser);
+        when(userService.getUserInfo(userId)).thenReturn(mockUser);
 
         userPointFacade.chargePoint(userId, chargePoint);
 
